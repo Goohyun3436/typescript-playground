@@ -1,23 +1,41 @@
 import styled from "styled-components";
 
 const Main = () => {
-<<<<<<< HEAD
-  // [1, 2, 3, 4] + false  >>  '+' 연산자를 'number[]' 및 'boolean' 형식에 적용할 수 없습니다.
+  // let a = "str";
+  // a = 1;  // 'number' 형식은 'string' 형식에 할당할 수 없습니다.
 
-  // function divide(a, b) {  // 'a' 매개 변수에는 암시적으로 'any' 형식이 포함됩니다.
-  //   return a / b;
-  // }
+  // let b: boolean = "x";  // 'string' 형식은 'boolean' 형식에 할당할 수 없습니다.
 
-  // divide("hello");  // 2개의 인수가 필요한데 1개를 가져왔습니다.
+  // 배열
+  // let a: number[] = [1, 2, 3];
+  // let b: string[] = ["il", "1"];
+  // let c: boolean[] = [true, false];
+
+  // optioner
+  // const player: {
+  //   name: string;
+  //   age?: number;
+  // } = {
+  //   name: "nico",
+  //   age: 1,
+  // };
+  // if(player.age < 10) {}  // 'player.age'은(는) 'undefined'일 수 있습니다.
+
+  // many optioner
+  // type Name = string;å
+  // type Age = number;
+  // type Player = { name: Name; age?: Age };
+
+  // const playerNico: Player = {
+  //   name: "nico",
+  // };
+
+  // const playerLynn: Player = {
+  //   name: "nico",
+  //   age: 1,
+  // };
 
   return <MainBlock></MainBlock>;
-=======
-  return (
-    <MainBlock>
-      <h1>javascript</h1>
-    </MainBlock>
-  );
->>>>>>> origin/main
 };
 
 const MainBlock = styled.div``;
