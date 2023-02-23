@@ -1,17 +1,13 @@
 import styled from "styled-components";
 
 const Main = () => {
-  //function
-  function add(a: number, b: number): number {
+  // over loading example
+  type Add = { (a: number, b: number): number; (a: number, b: string): number };
+
+  const add: Add = (a, b) => {
+    if (typeof b === "string") return a;
     return a + b;
-  }
-
-  // alow func
-  const alowAdd = (a: number, b: number): number => a + b;
-
-  // call signature of func
-  type Add = (a: number, b: number) => number;
-  const addCS: Add = (a, b) => a + b;
+  };
 
   return <MainBlock></MainBlock>;
 };
