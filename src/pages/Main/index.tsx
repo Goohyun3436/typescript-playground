@@ -1,50 +1,44 @@
 import styled from "styled-components";
 
 const Main = () => {
-  // Classes
+  // make hashmap
 
-  // in js
-  // class Player {
-  //   constructor(firstName, lastName) {
-  //     this.firstName = firstName;
-  //     this.lastName = lastName;
-  //   }
-  // }
+  type Words = {
+    [key: string]: string;
+  };
 
-  // in ts
-  abstract class User {
-    constructor(
-      private firstName: string,
-      private lastName: string,
-      public nickName: string,
-      protected proName: string // 자식 클래스에서 사용하고 싶을 때
-    ) {}
+  class Dict {
+    private words: Words;
+    constructor() {
+      this.words = {};
+    }
 
-    abstract getNickName(): void; // 추상 함수
+    // 메소드: 사전에 단어/뜻 추가
+    add(word: Word) {
+      // 사전에 해당 key 가 없다면
+      if (this.words[word.term] === undefined) {
+        this.words[word.term] = word.def;
+      }
+    }
 
-    getFullName() {
-      return `${this.firstName} ${this.lastName}`;
+    // 메소드: 뜻 return
+    def(term: string) {
+      return this.words[term];
     }
   }
 
-  // class 속성 상속
-  class Player extends User {
-    getNickName() {
-      console.log(this.nickName);
-    }
+  class Word {
+    constructor(public term: string, public def: string) {}
   }
 
-  const nico = new Player("nico", "las", "니꼬", "p");
+  const kimchi = new Word("kimchi", "한국의 음식");
 
-  // error: private
-  // 'firstName' 속성은 private이며 'Player' 클래스 내에서만 액세스할 수 있습니다.
-  // (js 에서는 가능함)
-  // private 는 변수, 메소드에 모두 적용 가능
-  nico.firstName;
-
-  // error: 추상 클래스로 인스턴트 만들기
-  // 상속만 가능하고 새로운 인스턴트 만들기는 불가능
-  const nico1 = new User("nico", "las", "니꼬");
+  // 사전 생성
+  const dict = new Dict();
+  // 단어 추가
+  dict.add(kimchi);
+  // 뜻 출력
+  console.log(dict.def("kimchi")); // >> 한국의 음식
 
   return <MainBlock></MainBlock>;
 };
