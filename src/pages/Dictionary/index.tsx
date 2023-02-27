@@ -4,7 +4,6 @@ import styled from "styled-components";
 const Dictionary = () => {
   const [wordValue, setWordValue] = useState("");
   const [defValue, setDefValue] = useState("");
-  const [dictValue, setDictValue] = useState({});
 
   type Words = {
     [key: string]: string;
@@ -34,14 +33,14 @@ const Dictionary = () => {
     constructor(public term: string, public def: string) {}
   }
 
-  const kimchi = new Word("kimchi", "한국의 음식");
-
   // 사전 생성
   const dict = new Dict();
-  // 단어 추가
-  dict.add(kimchi);
-  // 뜻 출력
-  console.log(dict.def("kimchi")); // >> 한국의 음식
+
+  const addWord = () => {
+    const newWord = new Word(wordValue, defValue);
+    dict.add(newWord);
+    console.log(dict);
+  };
 
   return (
     <DictionaryBlock>
@@ -59,11 +58,9 @@ const Dictionary = () => {
             value={defValue}
             onChange={(e) => setDefValue(e.target.value)}
           />
-          <button>추가</button>
+          <button onClick={addWord}>추가</button>
         </section>
-        <section className="view-container">
-          <div>{Object.keys(dictValue)}</div>
-        </section>
+        <section className="view-container"></section>
       </div>
     </DictionaryBlock>
   );
